@@ -26,3 +26,5 @@ create table Message (id int primary key auto_increment, title tinytext not null
 alter table Area add (numDescription int, foreign key(numDescription) references Instance_type(id));
 
 alter table Denunciation add (numName int, foreign key(numName) references Denunciation_type(id));
+
+alter table Event add (numEquipment int, foreign key (numEquipment), references Equipment(id));
