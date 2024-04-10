@@ -4,7 +4,9 @@ CREATE database Guild;
 use Guild;
 
 -- Create tables
-create table User (id int primary key auto_increment, nickname tinytext not null, email string tinytext not null, rank tinyint(1) not null, APIKey varchar(511) not null, fname string tinytext not null, lname string tinytext not null, birthDate DATETIME not null);
+create table User (id int primary key auto_increment, nickname tinytext not null, email string tinytext not null, fname string tinytext not null, lname string tinytext not null, birthDate DATETIME not null);
+
+create table API_key (id int primary key auto_increment, api_key varchar(511) not null);
 
 create table Denunciation (id int primary key auto_increment, name tinytext not null);
 create table Denunciation_type (id int primary key auto_increment, name tinytext not null);
@@ -29,4 +31,4 @@ alter table Denunciation add (numUser int, numName int, foreign key numUser() re
 
 alter table Event add (numUser int, numEquipment int, numCharacter int, numArea int, foreign key (numUser) references User(id), foreign key (numEquipment), references Equipment(id), foreign key (numCharacter) references Character(id), foreign key (numArea) references Area(id));
 
-alter table User add (numCharacter, numRank int, foreign key (numCharacter) references Character(id), foreign key (numRank) references Rank(id));
+alter table User add (numAPI_key int, numCharacter int, numRank int, foreign key (numAPI_key) references API_key(id), foreign key (numCharacter) references Character(id), foreign key (numRank) references Rank(id));
