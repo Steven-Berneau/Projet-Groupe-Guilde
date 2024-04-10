@@ -5,7 +5,7 @@
     "license": "ISC",
     "autoload": {
         "psr-4": {
-            "Aurele\\ProjetGroupeGuilde\\": "src/"
+            "Entities\\Guild\\": "src/models"
         }
     },
     "authors": [
