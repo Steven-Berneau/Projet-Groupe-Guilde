@@ -20,11 +20,9 @@ create table Rank (id int primary key auto_increment, name tinytext not null);
 
 create table Equipment (id int primary key auto_increment, name text(1023) not null);
 
-create table Message (id int primary key auto_increment, title tinytext not null, contents text(65535) not null, date datetime not null, sender tinitext not null, addressee tinytext not null);
+create table Message (id int primary key auto_increment, title tinytext not null, contents text(65535) not null, date datetime not null, sender int not null, addressee int not null, foreign key (sender) references User(id), foreign key (addressee) references User(id));
 
 -- Create foreign key to grant jointures capability.
 alter table Area add (numDescription int, foreign key(numDescription) references Instance_type(id));
 
-alter table Denunciation add (numName int, foreign key(numNuame) references Denunciation_type(id));
-
-alter table User add (numSender int, numAddressee int, foreign key(numSender) references Message(id), foreign key(numAddressee) references Message(id));
+alter table Denunciation add (numName int, foreign key(numName) references Denunciation_type(id));
