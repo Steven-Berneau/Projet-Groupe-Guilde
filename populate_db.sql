@@ -27,4 +27,6 @@ alter table Area add (numDescription int, foreign key(numDescription) references
 
 alter table Denunciation add (numName int, foreign key(numName) references Denunciation_type(id));
 
-alter table Event add (numEquipment int, foreign key (numEquipment), references Equipment(id));
+alter table Event add (numEquipment int, numCharacter int, numArea int, foreign key (numEquipment), references Equipment(id), foreign key (numCharacter) references Character(id), foreign key (numArea) references Area(id));
+
+alter table User add (numRank int, foreign key (numRank) references Rank(id));
