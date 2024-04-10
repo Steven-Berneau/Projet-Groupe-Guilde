@@ -1,0 +1,28 @@
+{
+    "name": "aurele/projet-groupe-guilde",
+    "description": "PHP group Guild MMORPG with mvc, phpunit and Docker",
+    "type": "project",
+    "license": "ISC",
+    "autoload": {
+        "psr-4": {
+            "Aurele\\ProjetGroupeGuilde\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "aurele",
+            "email": "aurelien.plazzotta@tutanota.com"
+        },
+        {
+            "name": "steven",
+            "email": "steven.berneau@gmail.com"
+        },
+        {
+            "name": "mallaury",
+            "email": "mallodevweb@gmail.com"
+        }
+    ],
+    "require": {
+        "phpunit/phpunit": "^11.1"
+    }
+}
