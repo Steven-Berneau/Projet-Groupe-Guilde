@@ -25,8 +25,8 @@ create table Message (id int primary key auto_increment, title tinytext not null
 -- Create foreign key to grant jointures capability.
 alter table Area add (numDescription int, foreign key(numDescription) references Instance_type(id));
 
-alter table Denunciation add (numName int, foreign key(numName) references Denunciation_type(id));
+alter table Denunciation add (numUser int, numName int, foreign key numUser() references User(id), foreign key(numName) references Denunciation_type(id));
 
 alter table Event add (numUser int, numEquipment int, numCharacter int, numArea int, foreign key (numUser) references User(id), foreign key (numEquipment), references Equipment(id), foreign key (numCharacter) references Character(id), foreign key (numArea) references Area(id));
 
-alter table User add (numRank int, foreign key (numRank) references Rank(id));
+alter table User add (numCharacter, numRank int, foreign key (numCharacter) references Character(id), foreign key (numRank) references Rank(id));
