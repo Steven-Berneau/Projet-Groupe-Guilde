@@ -4,6 +4,6 @@ declare(strict_types=1);
 
 use PHPUnit\Framework\TestCase;
 
-class GuildTest extends TestCase
-{
+class GuildTest extends TestCase{
+    
 }
