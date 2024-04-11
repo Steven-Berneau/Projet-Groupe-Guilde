@@ -26,6 +26,11 @@ class Event
     return $this->date;
   }
 
+  public function setDate(): void
+  {
+    $eventDate = new \DateTimeImmutable();
+  }
+
   public function getUsers(): \ArrayObject
   {
     return $this->users;
