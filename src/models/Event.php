@@ -6,7 +6,7 @@ namespace Entities\Guild;
 
 class Event
 {
-  public function __construct(private int $id = 0, private \DateTimeImmutable $date, private $users = new \ArrayObject(), private string $location, private int $levelMinimum = 1, private int $levelMaximum)
+  public function __construct(private int $id = 0, private \DateTimeImmutable $date = new \DateTimeImmutable(), private $users = new \ArrayObject(), private string $location, private int $levelMinimum = 1, private int $levelMaximum)
   {
     $this->id = $id;
     $this->date = $date;
