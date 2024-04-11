@@ -9,7 +9,7 @@ class User
     /**
      * Simple first class User
      */
-    public function __construct(private int $id = 0, private string $nickname, private string $email, private string $fname, private string $lname, private \DateTimeImmutable $birthdate)
+    public function __construct(private int $id = 0, private string $nickname ="", private string $email ="", private string $fname ="", private string $lname ="", private \DateTimeImmutable $birthdate)
     {
         $this->id = $id;
         $this->nickname = $nickname;
