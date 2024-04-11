@@ -26,7 +26,7 @@ class User{
         return $this -> _id;
     }
 
-    public function setId(int $id):int{
+    public function setId(int $id){
         return $this -> _id = $id;
     }
 
@@ -42,7 +42,7 @@ class User{
         return $this -> _email;
     }
 
-    public function setEmail(string $email):string{
+    public function setEmail(string $email){
         return $this -> _email = $email;
     }
 
@@ -50,7 +50,7 @@ class User{
         return $this -> _fname;
     }
 
-    public function setFname(string $fname):string{
+    public function setFname(string $fname){
         return $this -> _fname = $fname;
     }
 
@@ -58,7 +58,7 @@ class User{
         return $this -> _lname;
     }
 
-    public function setLname(string $lname):string{
+    public function setLname(string $lname){
         return $this -> _lname = $lname;
     }
 
@@ -66,7 +66,7 @@ class User{
         return $this -> _birthdate;
     }
 
-    public function setBirthdate(string $birthdate):dateImmutable{
+    public function setBirthdate(string $birthdate){
         return $this -> _birthdate = $birthdate;
     }
 
