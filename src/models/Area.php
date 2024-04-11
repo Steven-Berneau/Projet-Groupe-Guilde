@@ -8,6 +8,9 @@ class Area
 {
   public function __construct(private int $id = 0, private string $name = "", protected Instance_type $instance = new Instance_type())
   {
+    /**
+     * Using dependency injection
+     */
     $this->id = $id;
     $this->name = $name;
     $this->instance = $instance;
