@@ -36,6 +36,9 @@ class Event
 
   public function getUsers(): array
   {
+    /**
+     * Using User collection.
+     */
     return $this->users;
   }
 
