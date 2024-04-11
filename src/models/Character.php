@@ -20,7 +20,7 @@ class Character{
         return $this -> _id;
     }
 
-    public function setId():int{
+    public function setId(int $id){
         return $this -> _id = $id;
     }
 
@@ -28,7 +28,7 @@ class Character{
         return $this -> _archetype;
     }
 
-    public function setArchetype():string{
+    public function setArchetype(string $archetype){
         return $this -> _archetype = $archetype;
     }
 
@@ -36,8 +36,8 @@ class Character{
         return $this -> _level;
     }
 
-    public function setLevel():int{
+    public function setLevel(int $level){
         return $this -> _level = $level;
     }
-    
+
 }
