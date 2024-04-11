@@ -6,24 +6,29 @@ namespace Entities\Guild;
 
 class Denunciation{
 
-    public function __construct(private int $id = 0, private string $name){
+    public function __construct(private int $id = 0, protected DenunciationType $name = new DenunciationType())
+    {
         $this -> id = $id;
         $this -> name = $name;
     }
 
-    public function getId():int{
+    public function getId():int
+    {
         return $this -> id;
     }
 
-    public function setId(int $id){
+    public function setId(int $id)
+    {
         return $this -> id = $id;
     }
 
-    public function getName():string{
+    public function getName(): DenunciationType
+    {
         return $this -> name;
     }
 
-    public function setName(string $name){
+    public function setName(string $name)
+    {
         return $this -> name = $name;
     }
 }
