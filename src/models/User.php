@@ -26,7 +26,7 @@ class User{
         return $this -> _id;
     }
 
-    public function setId(int $id){
+    public function setId(int $id):int{
         return $this -> _id = $id;
     }
 
