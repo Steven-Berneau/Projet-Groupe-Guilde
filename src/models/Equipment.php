@@ -8,8 +8,6 @@ class Equipment
 {
     private int $id;
     private string $name;
-    private string $description;
-    private int $requiredLevel;
 
     public function __construct(int $id, string $name)
     {
