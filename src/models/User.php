@@ -6,6 +6,9 @@ namespace Entities\Guild;
 
 class User
 {
+    /**
+     * Simple first class User
+     */
     private int $_id;
     private string $_nickname;
     private string $_email;
