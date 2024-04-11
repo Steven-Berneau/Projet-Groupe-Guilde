@@ -9,81 +9,73 @@ class User
     /**
      * Simple first class User
      */
-    private int $_id;
-    private string $_nickname;
-    private string $_email;
-    private string $_fname;
-    private string $_lname;
-    private \DateTimeImmutable $_birthdate;
-
-
-    public function __construct(int $id = 0, string $nickname, string $email, string $fname, string $lname, \DateTimeImmutable $birthdate)
+    public function __construct(private int $id = 0, private string $nickname, private string $email, private string $fname, private string $lname, private \DateTimeImmutable $birthdate)
     {
-        $this->_id = $id;
-        $this->_nickname = $nickname;
-        $this->_email = $email;
-        $this->_fname = $fname;
-        $this->_lname = $lname;
-        $this->_birthdate = $birthdate;
+        $this->id = $id;
+        $this->nickname = $nickname;
+        $this->email = $email;
+        $this->fname = $fname;
+        $this->lname = $lname;
+        $this->birthdate = $birthdate;
     }
 
     public function getId(): int
     {
-        return $this->_id;
+        return $this->id;
     }
 
     public function setId(int $id)
     {
-        return $this->_id = $id;
+        return $this->id = $id;
     }
 
     public function getNickname(): string
     {
-        return $this->_nickname;
+        return $this->nickname;
     }
 
     public function setNickname(string $nickname)
     {
-        return $this->_nickname = $nickname;
+        return $this->nickname = $nickname;
     }
 
     public function getEmail(): string
     {
-        return $this->_email;
+        return $this->email;
     }
 
     public function setEmail(string $email)
     {
-        return $this->_email = $email;
+        return $this->email = $email;
     }
 
     public function getFname(): string
     {
-        return $this->_fname;
+        return $this->fname;
     }
 
     public function setFname(string $fname)
     {
-        return $this->_fname = $fname;
+        return $this->fname = $fname;
     }
 
     public function getLname(): string
     {
-        return $this->_lname;
+        return $this->lname;
     }
 
     public function setLname(string $lname)
     {
-        return $this->_lname = $lname;
+        return $this->lname = $lname;
     }
 
     public function getBirthdate(): \DateTimeImmutable
     {
-        return $this->_birthdate;
+        return $this->birthdate;
     }
 
     public function setBirthdate(string $birthdate)
     {
-        return $this->_birthdate = $birthdate;
+        return $this->birthdate = $birthdate;
     }
 }
