@@ -6,7 +6,7 @@ namespace Entities\Guild;
 
 class Event
 {
-  public function __construct(private int $id = 0, private \DateTimeImmutable $date = new \DateTimeImmutable(), private $users = new \ArrayObject(), private string $location, private int $levelMinimum = 1, private int $levelMaximum)
+  public function __construct(private int $id = 0, private \DateTimeImmutable $date = new \DateTimeImmutable(), private $users = [], private string $location, private int $levelMinimum = 1, private int $levelMaximum)
   {
     $this->id = $id;
     $this->date = $date;
@@ -26,14 +26,23 @@ class Event
     return $this->date;
   }
 
-  public function setDate(): void
+  public function setDate(string $frenchDate, ?\DateTimeZone $hour): void
   {
-    $eventDate = new \DateTimeImmutable();
+    $this->date = \DateTimeImmutable::createFromFormat('d/m/Y H:i', $frenchDate, $hour);
   }
 
-  public function getUsers(): \ArrayObject
+  public function getUsers(): array
   {
     return $this->users;
+  }
+
+  public function addNewParticipant(string $user): void
+  {
+    if (in_array($user, $this->users)) {
+      echo 'This participant has already subscribed to this event!', PHP_EOL;
+    } else {
+      $this->users[] = $user;
+    }
   }
 
   public function getLocation(): string
@@ -41,13 +50,31 @@ class Event
     return $this->location;
   }
 
+  public function setLocation(string $location): void
+  {
+    $this->location = $location;
+  }
+
   public function getLevelMinimum(): int
   {
     return $this->levelMinimum;
   }
 
+  public function setLevelMinimum(int $level): void
+  {
+    if ($this->levelMinimum >= $this->levelMaximum) {
+      echo 'Please enter a minimum level inferior to maximum level!', PHP_EOL;
+    } else {
+      $this->levelMinimum = $level;
+    }
+  }
+
   public function getLevelMaximum(): int
   {
-    return $this->levelMaximum;
+    if ($this->levelMaximum <= $this->levelMinimum) {
+      echo 'Please enter a maximum level superior to minimum level!', PHP_EOL;
+    } else {
+      return $this->levelMaximum;
+    }
   }
 }
