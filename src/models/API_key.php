@@ -6,6 +6,9 @@ namespace Entities\Guild;
 
 class API_key
 {
+    /**
+     * First pass with accesors
+     */
     public function __construct(private int $id = 0, private string $api_key)
     {
         $this->id = $id;
