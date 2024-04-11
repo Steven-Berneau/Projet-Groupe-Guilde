@@ -21,7 +21,7 @@ class Rank
   public function setName(string $name): void
   {
     if (strlen($name) < 3) {
-      throw new InvalidArgumentException("Rank's name must be at least 3 characters!");
+      throw new \InvalidArgumentException("Rank's name must be at least 3 characters long!");
     }
     $this->name = $name;
   }
