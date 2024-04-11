@@ -13,7 +13,7 @@ class Message
         $this->title = $title;
         // Attribution de la valeur de $date à la propriété $date de l'objet
         // Si $date est null, une nouvelle instance de DateTimeImmutable est créée avec la date et l'heure actuelles
-        $this->date = $date ?: new \DateTimeImmutable();
+        $this->date = $date ?: new \DateTimeImmutable(); //test
     }
 
     public function getId(): int
