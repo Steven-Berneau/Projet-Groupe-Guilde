@@ -28,11 +28,17 @@ class Event
 
   public function setDate(string $frenchDate, ?\DateTimeZone $hour): void
   {
+    /**
+     * French date format: day/month/year
+     */
     $this->date = \DateTimeImmutable::createFromFormat('d/m/Y H:i', $frenchDate, $hour);
   }
 
   public function getUsers(): array
   {
+    /**
+     * Using User collection.
+     */
     return $this->users;
   }
 
