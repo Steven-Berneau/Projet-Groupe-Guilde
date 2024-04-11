@@ -6,38 +6,34 @@ namespace Entities\Guild;
 
 class Character{
 
-    private int $_id;
-    private string $_archetype;
-    private int $_level;
-
-    public function __construct(int $id = 0, string $archetype, int $level){
-        $this -> _id = $id;
-        $this -> _archetype = $archetype;
-        $this -> _level = $level;
+    public function __construct(private int $id = 0,private string $archetype,private int $level){
+        $this -> id = $id;
+        $this -> archetype = $archetype;
+        $this -> level = $level;
     }
 
     public function getId():int{
-        return $this -> _id;
+        return $this -> id;
     }
 
     public function setId(int $id){
-        return $this -> _id = $id;
+        return $this -> id = $id;
     }
 
     public function getArchetype():string{
-        return $this -> _archetype;
+        return $this -> archetype;
     }
 
     public function setArchetype(string $archetype){
-        return $this -> _archetype = $archetype;
+        return $this -> archetype = $archetype;
     }
 
     public function getLevel():int{
-        return $this -> _level;
+        return $this -> level;
     }
 
     public function setLevel(int $level){
-        return $this -> _level = $level;
+        return $this -> level = $level;
     }
 
 }
