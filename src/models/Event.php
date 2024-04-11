@@ -86,4 +86,25 @@ class Event
       return $this->levelMaximum;
     }
   }
+
+  public static function listEvents(): \ArrayObject
+  {
+    /**
+     * READ SQL request.
+     */
+    $list = new \ArrayObject();
+    $stmt = Database::getInstance()->getConnexion()->prepare('select * from Event');
+    $stmt->execute();
+    while ($row = $stmt->fetch()) {
+      $list[] = new Event(id: $row['id'], users: $row['users'], location: $row['location'], levelMinimum: $row['levelMinimum'], levelMaximum: $row['levelMaximum']);
+    }
+
+    return $list;
+  }
+
+  public static function createEvent(Event $event): void
+  {
+    $stmt = Database::getInstance()->getConnexion()->prepare('INSERT INTO Event (date, users, location, levelMinimum, levelMaximum) values (:date, :users, :location, :levelMinimum, :levelMaximum);');
+    $stmt->execute(['date' => $event->getDate(), '']);
+  }
 }
