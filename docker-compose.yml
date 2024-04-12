@@ -2,7 +2,7 @@ version: '1.0'
 
 services:
   webservice:
-    container_name: "PHP-SERVER"
+    container_name: "PHP-SERVER-GUILD"
     build: ./build/php
     volumes:
       - .:/var/www/html
