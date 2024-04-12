@@ -8,12 +8,12 @@ class Characters extends \ArrayObject
 {
     public function __construct(protected array $characters = [])
     {
-        $this->characters =$characters;
+        $this->characters = $characters;
     }
 
-    public function offsetSet($index, $newval):void
+    public function offsetSet($index, $newval): void
     {
-        if(!($newval instanceOf Character)){
+        if (!($newval instanceof Character)) {
             throw new \InvalidArgumentException("Must be a character");
         }
         parent::offsetSet($index, $newval);
@@ -24,8 +24,8 @@ class Characters extends \ArrayObject
         $liste = new Characters();
         $statement = Database::getInstance()->getConnexion()->prepare('SELECT * FROM Character where numCharacter=:numCharacter;');
         $statement->execute(['numCharacter' => $idCharacter]);
-        while ($row = $statement->fetch()){
-            $liste[] = new Character(id: $row['nickname'], archetype: $row['archetype'], level: $row ['level']);
+        while ($row = $statement->fetch()) {
+            $liste[] = new Character(id: $row['nickname'], archetype: $row['archetype'], level: $row['level']);
         }
         return $liste;
     }
