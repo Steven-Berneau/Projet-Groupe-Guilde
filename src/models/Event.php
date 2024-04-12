@@ -9,14 +9,19 @@ class Event
   /**
    * Simple class with accessors.
    */
-  public function __construct(private int $id = 0, private \DateTimeImmutable $date = new \DateTimeImmutable(), private $users = [], private string $location, private int $levelMinimum = 1, private int $levelMaximum)
+  public function __construct(private \DateTimeImmutable $date = new \DateTimeImmutable(), private User $organizer, private int $levelMinimum = 1, private int $levelMaximum, private int $id = 0, private Areas $areas, private Characters $participants)
   {
     $this->id = $id;
     $this->date = $date;
-    $this->users = $users;
-    $this->location = $location;
+    $this->organizer = $organizer;
+    $this->areas = $areas;
     $this->levelMinimum = $levelMinimum;
     $this->levelMaximum = $levelMaximum;
+  }
+
+  public function __set(string $property, string $value): void
+  {
+    $this->$property = $value;
   }
 
   public function getId(): int
@@ -106,5 +111,11 @@ class Event
   {
     $stmt = Database::getInstance()->getConnexion()->prepare('INSERT INTO Event (date, users, location, levelMinimum, levelMaximum) values (:date, :users, :location, :levelMinimum, :levelMaximum);');
     $stmt->execute(['date' => $event->getDate(), '']);
+  }
+
+  public static function updateEvent(Event $event, string $field): void
+  {
+    $stmt = Database::getInstance()->getConnexion()->prepare('UPDATE event set date = :date, numUser = :numUser, numEquipment = :numEquipment, levelMinimum = :levelMinimum, levelMaximum = :levelMaximum WHERE id = :id');
+    $stmt->execute(['id' => $event->getId(), 'date' => $event->getDate(), 'numUser' => $event->get]);
   }
 }
