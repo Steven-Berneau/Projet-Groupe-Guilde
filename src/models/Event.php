@@ -9,7 +9,7 @@ class Event
   /**
    * Simple class with accessors.
    */
-  public function __construct(private \DateTimeImmutable $date = new \DateTimeImmutable(), private User $organizer, private int $levelMinimum = 1, private int $levelMaximum, private int $id = 0, private Areas $areas, private Characters $participants)
+  public function __construct(private \DateTimeImmutable $date = new \DateTimeImmutable(), private User $organizer, private Areas $areas, private Characters $participants, private int $levelMinimum = 1, private int $levelMaximum, private int $id = 0)
   {
     $this->id = $id;
     $this->date = $date;
@@ -17,11 +17,7 @@ class Event
     $this->areas = $areas;
     $this->levelMinimum = $levelMinimum;
     $this->levelMaximum = $levelMaximum;
-  }
-
-  public function __set(string $property, string $value): void
-  {
-    $this->$property = $value;
+    $this->participants = $participants;
   }
 
   public function getId(): int
@@ -42,21 +38,33 @@ class Event
     $this->date = \DateTimeImmutable::createFromFormat('d/m/Y H:i', $frenchDate, $hour);
   }
 
-  public function getUsers(): array
+  public function getOrganizer(): User
   {
-    /**
-     * Using User collection.
-     */
-    return $this->users;
+    return $this->organizer;
   }
 
-  public function addNewParticipant(string $user): void
+  public function setOrganizer(string $organizer): void
   {
-    if (in_array($user, $this->users)) {
-      echo 'This participant has already subscribed to this event!', PHP_EOL;
-    } else {
-      $this->users[] = $user;
-    }
+    $this->organizer = $organizer;
+  }
+
+  public function getAreas(): Areas
+  {
+    return $this->areas;
+  }
+
+  public function setAreas(string $location): void
+  {
+    // TODO!!!
+    // $this->location = $location;
+  }
+
+  public function addNewParticipant(User $user): void
+  {
+    if (!in_array($user, $this->participants))
+      throw new \InvalidArgumentException('This participant has already subscribed to this event!');
+
+    $this->participants[] = $user;
   }
 
   public function getLocation(): string
@@ -116,6 +124,6 @@ class Event
   public static function updateEvent(Event $event, string $field): void
   {
     $stmt = Database::getInstance()->getConnexion()->prepare('UPDATE event set date = :date, numUser = :numUser, numEquipment = :numEquipment, levelMinimum = :levelMinimum, levelMaximum = :levelMaximum WHERE id = :id');
-    $stmt->execute(['id' => $event->getId(), 'date' => $event->getDate(), 'numUser' => $event->get]);
+    $stmt->execute(['id' => $event->getId(), 'date' => $event->getDate(), 'numUser' => $event->getUser(), 'numEquipement' => getEquipement(), 'levelMinimum' => $event->getLevelMinimum(), $event->getLevelMaximum()]);
   }
 }
