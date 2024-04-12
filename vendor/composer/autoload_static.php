@@ -16,13 +16,13 @@ class ComposerStaticInitfbee484fbcb98ba45566f17e8eb69e9b
         array (
             'PhpParser\\' => 10,
         ),
+        'E' => 
+        array (
+            'Entities\\Guild\\' => 15,
+        ),
         'D' => 
         array (
             'DeepCopy\\' => 9,
-        ),
-        'A' => 
-        array (
-            'Aurele\\ProjetGroupeGuilde\\' => 26,
         ),
     );
 
@@ -31,13 +31,13 @@ class ComposerStaticInitfbee484fbcb98ba45566f17e8eb69e9b
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
+        'Entities\\Guild\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src/models',
+        ),
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
-        ),
-        'Aurele\\ProjetGroupeGuilde\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 
@@ -68,6 +68,19 @@ class ComposerStaticInitfbee484fbcb98ba45566f17e8eb69e9b
         'DeepCopy\\TypeFilter\\Spl\\SplDoublyLinkedListFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/Spl/SplDoublyLinkedListFilter.php',
         'DeepCopy\\TypeFilter\\TypeFilter' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeFilter/TypeFilter.php',
         'DeepCopy\\TypeMatcher\\TypeMatcher' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/TypeMatcher/TypeMatcher.php',
+        'Entities\\Guild\\API_key' => __DIR__ . '/../..' . '/src/models/API_key.php',
+        'Entities\\Guild\\Area' => __DIR__ . '/../..' . '/src/models/Area.php',
+        'Entities\\Guild\\Character' => __DIR__ . '/../..' . '/src/models/Character.php',
+        'Entities\\Guild\\Database' => __DIR__ . '/../..' . '/src/models/Database.php',
+        'Entities\\Guild\\Denunciation' => __DIR__ . '/../..' . '/src/models/Denunciation.php',
+        'Entities\\Guild\\DenunciationType' => __DIR__ . '/../..' . '/src/models/DenunciationType.php',
+        'Entities\\Guild\\Equipment' => __DIR__ . '/../..' . '/src/models/Equipment.php',
+        'Entities\\Guild\\Event' => __DIR__ . '/../..' . '/src/models/Event.php',
+        'Entities\\Guild\\Instance_type' => __DIR__ . '/../..' . '/src/models/Instance_type.php',
+        'Entities\\Guild\\Message' => __DIR__ . '/../..' . '/src/models/Message.php',
+        'Entities\\Guild\\Rank' => __DIR__ . '/../..' . '/src/models/Rank.php',
+        'Entities\\Guild\\User' => __DIR__ . '/../..' . '/src/models/User.php',
+        'Entities\\Guild\\Users' => __DIR__ . '/../..' . '/src/models/Users.php',
         'PHPUnit\\Event\\Application\\Finished' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Application/Finished.php',
         'PHPUnit\\Event\\Application\\FinishedSubscriber' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Application/FinishedSubscriber.php',
         'PHPUnit\\Event\\Application\\Started' => __DIR__ . '/..' . '/phpunit/phpunit/src/Event/Events/Application/Started.php',
