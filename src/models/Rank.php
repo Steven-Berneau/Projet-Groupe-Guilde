@@ -8,7 +8,7 @@ use InvalidArgumentException;
 
 class Rank
 {
-  public function __construct(private int $id = 0, private string $name)
+  public function __construct(private int $id = 0, private string $name = "")
   {
     $this->name = $name;
   }

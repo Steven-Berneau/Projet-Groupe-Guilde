@@ -5,7 +5,7 @@
 </testsuite>
 <source>
   <include>
-    <directory suffix=".php">/src/models</directory>
+    <directory suffix=".php">src/models</directory>
   </include>
 </source>
 </phpunit>
