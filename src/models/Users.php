@@ -13,7 +13,7 @@ class Users extends \ArrayObject
 
   public function offsetSet($index, $newval): void
   {
-    if (!($newval instanceof User)) {
+    if (!($newval instanceOf User)) {
       throw new \InvalidArgumentException("Must be a user");
     }
     parent::offsetSet($index, $newval);
