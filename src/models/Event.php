@@ -9,12 +9,12 @@ class Event
   /**
    * Simple class with accessors.
    */
-  public function __construct(private \DateTimeImmutable $date = new \DateTimeImmutable(), private User $organizer, private Areas $areas, private Characters $participants, private int $levelMinimum = 1, private int $levelMaximum, private int $id = 0)
+  public function __construct(private \DateTimeImmutable $date = new \DateTimeImmutable(), private User $organizer, private Area $area, private Characters $participants = new Characters(), private int $levelMinimum = 1, private int $levelMaximum = 1, private int $id = 0)
   {
     $this->id = $id;
     $this->date = $date;
     $this->organizer = $organizer;
-    $this->areas = $areas;
+    $this->area = $area;
     $this->levelMinimum = $levelMinimum;
     $this->levelMaximum = $levelMaximum;
     $this->participants = $participants;
@@ -48,33 +48,23 @@ class Event
     $this->organizer = $organizer;
   }
 
-  public function getAreas(): Areas
+  public function getArea(): Area
   {
-    return $this->areas;
+    return $this->area;
   }
 
-  public function setAreas(string $location): void
+  public function setArea(Area $area): void
   {
-    // TODO!!!
-    // $this->location = $location;
+    $this->area = $area;
   }
 
-  public function addNewParticipant(User $user): void
+  public function addNewParticipant(Character $character): void
   {
-    if (!in_array($user, $this->participants))
+    // if (!in_array($user, $this->participants))
+    if (!self::isCharacterPresent($character))
+      $this->participants[] = $character;
+    else
       throw new \InvalidArgumentException('This participant has already subscribed to this event!');
-
-    $this->participants[] = $user;
-  }
-
-  public function getLocation(): string
-  {
-    return $this->location;
-  }
-
-  public function setLocation(string $location): void
-  {
-    $this->location = $location;
   }
 
   public function getLevelMinimum(): int
@@ -109,7 +99,9 @@ class Event
     $stmt = Database::getInstance()->getConnexion()->prepare('select * from Event');
     $stmt->execute();
     while ($row = $stmt->fetch()) {
-      $list[] = new Event(id: $row['id'], users: $row['users'], location: $row['location'], levelMinimum: $row['levelMinimum'], levelMaximum: $row['levelMaximum']);
+      $area = Area::read($row['numArea']); //TODO!!!
+      $organizer = User::read($row['numUser']);
+      $list[] = new Event(id: $row['id'], organizer: $organizer, area: $area, levelMinimum: $row['levelMinimum'], levelMaximum: $row['levelMaximum']);
     }
 
     return $list;
@@ -117,13 +109,26 @@ class Event
 
   public static function createEvent(Event $event): void
   {
-    $stmt = Database::getInstance()->getConnexion()->prepare('INSERT INTO Event (date, users, location, levelMinimum, levelMaximum) values (:date, :users, :location, :levelMinimum, :levelMaximum);');
-    $stmt->execute(['date' => $event->getDate(), '']);
+    $stmt = Database::getInstance()->getConnexion()->prepare('INSERT INTO Event (date, organizer, numUser, numArea, levelMinimum, levelMaximum) values (:date, :organizer, :numArea, :numUser, :levelMinimum, :levelMaximum, :numCharacter);');
+    $stmt->execute(['date' => $event->getDate(), 'organizer' => $event->getOrganizer()->getId(), 'numArea' => $event->getArea()->getId(), 'levelMinimum' => $event->getLevelMinimum(), 'levelMaximum' => $event->getLevelMaximum()]);
   }
 
   public static function updateEvent(Event $event, string $field): void
   {
     $stmt = Database::getInstance()->getConnexion()->prepare('UPDATE event set date = :date, numUser = :numUser, numEquipment = :numEquipment, levelMinimum = :levelMinimum, levelMaximum = :levelMaximum WHERE id = :id');
     $stmt->execute(['id' => $event->getId(), 'date' => $event->getDate(), 'numUser' => $event->getUser(), 'numEquipement' => getEquipement(), 'levelMinimum' => $event->getLevelMinimum(), $event->getLevelMaximum()]);
+  }
+
+  public function isCharacterPresent(Character $character): bool
+  {
+    $stmt = Database::getInstance()->getConnexion()->prepare('SELECT count(*) as countPresents FROM Participates WHERE numCharacter = :numCharacter AND numEvent = :numEvent');
+    $stmt->execute(['numCharacter' => $character->getId(), 'numEvent' => $this->id]);
+
+    while ($row = $stmt->fetch()) {
+      if ($row['countPresents'] == 1) {
+        return true;
+      }
+    }
+    return false;
   }
 }

@@ -78,4 +78,15 @@ class User
     {
         return $this->birthdate = $birthdate;
     }
+    public static function read(int $id): ?User
+    {
+        $statement = Database::getInstance()->getConnexion()->prepare('select * from User where id =:id;');
+        $statement->execute(['id' => $id]);
+        if ($row = $statement->fetch()) {
+            $user = new User(id: $row['id'], nickname: $row['nickname'], email: $row['email'], fname: $row['fname'], lname: $row['lname'], birthDate: $row['birthDate'], numAPI_key: $row['num_API_key'], numCharacter: $row['numCharacter'], numRank: $row['numRank'], numDenunciation: $row['numDenunciation']);
+
+            return $user;
+        }
+        return null;
+    }
 }
