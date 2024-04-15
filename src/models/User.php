@@ -92,9 +92,9 @@ class User
 
     public static function create(User $user): int
     {
-        $statement = Databse::getInstance()->getConnexion()->prepare('INSERT INTO User (nickname,email,fname,lname,birthdate) VALUES (:nickname, :email, :fname, :lname, :birthdate);');
+        $statement = Database::getInstance()->getConnexion()->prepare('INSERT INTO User (nickname,email,fname,lname,birthdate) VALUES (:nickname, :email, :fname, :lname, :birthdate);');
         $statement->execute(['nickname' => $user->getNickname(), 'email' => $user->getEmail(), 'fname' => $user->getFname(), 'lname' => $user->getLname(), 'birthdate' => $user->getBirthdate()]);
-        return (int)Database::getInstance()->getConnexion()->lastInsertionId();
+        return (int)Database::getInstance()->getConnexion()->lastInsertId();
     }
 
     public static function update(User $user)
@@ -112,10 +112,10 @@ class User
     public static function loadFromJson($data)
     {
         foreach ($data as $u) {
-        $user = new User($u->nickname);
-        $id=User::create($user);
-        $user=User::read($id);
-        echo "id=".$id;
+            $user = new User($u->nickname);
+            $id = User::create($user);
+            $user = User::read($id);
+            echo "id=" . $id;
         }
     }
 }
