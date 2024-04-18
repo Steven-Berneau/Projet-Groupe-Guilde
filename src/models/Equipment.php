@@ -21,4 +21,13 @@ class Equipment
     {
         return $this->name;
     }
+    public static function read(int $id): ?Equipment
+    {
+        $statement = Database::getInstance()->getConnexion()->prepare('SELECT * FROM Equipment WHERE id=:id;');
+        $statement->execute(['id' => $id]);
+        if ($row = $statement->fetch()) {
+            return new Equipment(id: $row['id'], name: $row['gear']);
+        }
+        return null;
+    }
 }
