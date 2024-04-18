@@ -9,6 +9,7 @@ class User
     /**
      * Simple first class User
      */
+
     public function __construct(private int $id = 0, private string $nickname = "", private string $email = "", private string $fname = "", private string $lname = "", private \DateTimeImmutable $birthdate)
     {
         $this->id = $id;
@@ -79,6 +80,30 @@ class User
         return $this->birthdate = $birthdate;
     }
     /**
+     * Link with Database
+     */
+    public static function list(): Users
+    {
+        $list = new Users();
+        $statement = Database::getInstance()->getConnexion()->prepare('SELECT * FROM User;');
+        $statement->execute();
+        while ($row = $statement->fetch()) {
+            $list[] = new User(id: $row['id'], nickname: $row['nickname'], email: $row['email'], fname: $row['fname'], lname: $row['lname'], birthdate: $row['birthdate']);
+        }
+        return $list;
+    }
+
+    public static function filter(string $text): Users
+    {
+        $list = new Users();
+        $statement = Database::getInstance()->getConnexion()->prepare('SELECT * FROM User WHERE nickname like :textSearched;');
+        $statement->execute(['textSearched' => '%' . $text . '%']);
+        while ($row = $statement->fetch()) {
+            $list[] = new User(id: $row['id'], nickname: $row['nickname'], email: $row['email'], fname: $row['fname'], lname: $row['lname'], birthdate: $row['birthdate']);
+        }
+        return $list;
+    }
+    /**
      * Starting CRUD
      */
     public static function read(int $id): ?User
@@ -107,15 +132,5 @@ class User
     {
         $statement = Database::getInstance()->getConnexion()->prepare('DELETE FROM User WHERE id=:id');
         $statement->execute(['id' => $user->getId()]);
-    }
-
-    public static function loadFromJson($data)
-    {
-        foreach ($data as $u) {
-            $user = new User($u->nickname);
-            $id = User::create($user);
-            $user = User::read($id);
-            echo "id=" . $id;
-        }
     }
 }
