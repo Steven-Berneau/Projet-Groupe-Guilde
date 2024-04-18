@@ -22,13 +22,13 @@ class GuildTest extends TestCase
     }
     public function testUser2()
     {
-        $user = new User("",birthdate: new \DateTimeImmutable('1990/01/30'));
+        $user = new User(email: "", birthdate: new \DateTimeImmutable('1990/01/30'));
         $this->assertSame("", $user->getEmail());
     }
 
     public function testUser3()
     {
-        $user = new User("",birthdate: new \DateTimeImmutable('1990/01/30'));
+        $user = new User(email: "", birthdate: new \DateTimeImmutable('1990/01/30'));
         $user->setEmail("Testing setEmail");
         $this->assertSame("Testing setEmail", $user->getEmail());
     }
@@ -80,12 +80,12 @@ class GuildTest extends TestCase
     public function testEquipment1()
     {
         $equipment = new Equipment(id: 0);
-        $this->assertSame(0,$equipment->getId());
+        $this->assertSame(0, $equipment->getId());
     }
 
     public function testequipment2()
     {
-        $equipment = new Equipment(name:"");
+        $equipment = new Equipment(name: "");
         $this->assertSame("", $equipment->getName());
     }
 }
