@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace app\quizz\router\Route;
 
-use app\quizz\router\RouteNotSetException;
+use app\quizz\router\Route;
 
 class HttpRequest
 {
