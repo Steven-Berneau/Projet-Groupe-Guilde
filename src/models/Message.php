@@ -46,9 +46,11 @@ class Message
         return $this->adressee;
     }
 
-    public static function create(Message message): int
+    public static function create(Message $message, User $sender): int
     {
-        $stmt = Database::getInstance()->getConnexion()->prepare('INSERT INTO Message (title, contents, date, addressee') values ();
+        // $stmt = Database::getInstance()->getConnexion()->prepare('INSERT INTO Message (title, contents, date, addressee.sended ') values (:sender);
+
+        // ['sender'=>$sender->getId()]
     }
 
     // public static function create (Question $question,Quizz $quizz):int

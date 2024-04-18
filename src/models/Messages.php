@@ -32,7 +32,11 @@ class Messages extends \ArrayObject
   }
 }
 
-// Do I have to insert id within new Message() at line 28?
+// Do I have to insert id within new Message() at line 28? YYYESSSS!!
 // Do I have to insert foreign key from User? And if so, how to proceed?
-// Where is lastInsertId() method's implementation ? (from Question.php in quiz project)
+// Where is lastInsertId() method's implementation ? (from Question.php in quiz project) inherits from PDO
 // How to insert sender and addressee foreign key into Message::create() ? (Message.php)
+
+// AgendaController
+// ProfileController
+// MessageController
