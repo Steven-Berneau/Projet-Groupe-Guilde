@@ -25,8 +25,9 @@ class Characters extends \ArrayObject
         $statement = Database::getInstance()->getConnexion()->prepare('SELECT * FROM Character where numCharacter=:numCharacter;');
         $statement->execute(['numCharacter' => $idCharacter]);
         while ($row = $statement->fetch()) {
-            $liste[] = new Character(id: $row['nickname'], archetype: $row['archetype'], level: $row['level']);
+            $liste[] = new Character(id: $row['id'], archetype: $row['archetype'], level: $row['level']);
         }
+
         return $liste;
     }
 }

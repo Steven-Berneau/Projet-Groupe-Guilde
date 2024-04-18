@@ -45,4 +45,16 @@ class Message
     {
         return $this->adressee;
     }
+
+    public static function create(Message message): int
+    {
+        $stmt = Database::getInstance()->getConnexion()->prepare('INSERT INTO Message (title, contents, date, addressee') values ();
+    }
+
+    // public static function create (Question $question,Quizz $quizz):int
+    // {
+    //     $statement=Database::getInstance()->getConnexion()->prepare("INSERT INTO question (text,numQuiz) values (:text,:numQuiz);");
+    //     $statement->execute(['text'=>$question->getText(),'numQuiz'=>$quizz->getId()]);
+    //     return (int)Database::getInstance()->getConnexion()->lastInsertId();
+    // }
 }
