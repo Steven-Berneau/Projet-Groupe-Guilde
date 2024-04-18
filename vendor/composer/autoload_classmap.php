@@ -6,6 +6,15 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Guild\\Router\\ActionNotFoundException' => $baseDir . '/src/router/ActionNotFoundException.php',
+    'App\\Guild\\Router\\ControllerNotFoundException' => $baseDir . '/src/router/ControllerNotFoundException.php',
+    'App\\Guild\\Router\\HttpRequest' => $baseDir . '/src/router/HttpRequest.php',
+    'App\\Guild\\Router\\MultipleRouteFoundException' => $baseDir . '/src/router/MultipleRouteFoundException.php',
+    'App\\Guild\\Router\\NoRouteFoundException' => $baseDir . '/src/router/NoRouteFoundException.php',
+    'App\\Guild\\Router\\Route' => $baseDir . '/src/router/Route.php',
+    'App\\Guild\\Router\\RouteNotSetException' => $baseDir . '/src/router/RouteNotSetException.php',
+    'App\\Guild\\Router\\Router' => $baseDir . '/src/router/Router.php',
+    'App\\Guild\\Router\\ViewNotFoundException' => $baseDir . '/src/router/ViewNotFoundException.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'DeepCopy\\DeepCopy' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
     'DeepCopy\\Exception\\CloneException' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',

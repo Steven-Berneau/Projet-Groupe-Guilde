@@ -2,33 +2,34 @@
 
 declare(strict_types=1);
 
-namespace Entities\Guild;
+namespace App\Guild;
 
-class Denunciation{
+class Denunciation
+{
 
     public function __construct(private int $id = 0, protected DenunciationType $name = new DenunciationType())
     {
-        $this -> id = $id;
-        $this -> name = $name;
+        $this->id = $id;
+        $this->name = $name;
     }
 
-    public function getId():int
+    public function getId(): int
     {
-        return $this -> id;
+        return $this->id;
     }
 
     public function setId(int $id)
     {
-        return $this -> id = $id;
+        return $this->id = $id;
     }
 
     public function getName(): DenunciationType
     {
-        return $this -> name;
+        return $this->name;
     }
 
     public function setName(string $name)
     {
-        return $this -> name = $name;
+        return $this->name = $name;
     }
 }

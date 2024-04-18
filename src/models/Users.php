@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Entities\Guild;
+namespace App\Guild;
 
 class Users extends \ArrayObject
 {
@@ -13,7 +13,7 @@ class Users extends \ArrayObject
 
   public function offsetSet($index, $newval): void
   {
-    if (!($newval instanceOf User)) {
+    if (!($newval instanceof User)) {
       throw new \InvalidArgumentException("Must be a user");
     }
     parent::offsetSet($index, $newval);

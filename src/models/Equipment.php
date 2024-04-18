@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Entities\Guild;
+namespace App\Guild;
 
 class Equipment
 {
-    public function __construct(private int $id = 0,private string $name ="")
+    public function __construct(private int $id = 0, private string $name = "")
     {
         $this->id = $id;
         $this->name = $name;

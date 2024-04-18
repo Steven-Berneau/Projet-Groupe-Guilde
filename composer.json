@@ -5,9 +5,9 @@
     "license": "ISC",
     "autoload": {
         "psr-4": {
-            "App\\Guild\\Model\\": "src/models",
+            "App\\Guild\\Models\\": "src/models",
             "App\\Guild\\Router\\": "src/router",
-            "App\\Guild\\Controller\\": "src/controllers"
+            "App\\Guild\\Controllers\\": "src/controllers"
         }
     },
     "authors": [

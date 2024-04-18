@@ -23,8 +23,8 @@ class ComposerStaticInitfbee484fbcb98ba45566f17e8eb69e9b
         'A' => 
         array (
             'App\\Guild\\Router\\' => 17,
-            'App\\Guild\\Model\\' => 16,
-            'App\\Guild\\Controller\\' => 21,
+            'App\\Guild\\Models\\' => 17,
+            'App\\Guild\\Controllers\\' => 22,
         ),
     );
 
@@ -41,17 +41,26 @@ class ComposerStaticInitfbee484fbcb98ba45566f17e8eb69e9b
         array (
             0 => __DIR__ . '/../..' . '/src/router',
         ),
-        'App\\Guild\\Model\\' => 
+        'App\\Guild\\Models\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/models',
         ),
-        'App\\Guild\\Controller\\' => 
+        'App\\Guild\\Controllers\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src/controllers',
         ),
     );
 
     public static $classMap = array (
+        'App\\Guild\\Router\\ActionNotFoundException' => __DIR__ . '/../..' . '/src/router/ActionNotFoundException.php',
+        'App\\Guild\\Router\\ControllerNotFoundException' => __DIR__ . '/../..' . '/src/router/ControllerNotFoundException.php',
+        'App\\Guild\\Router\\HttpRequest' => __DIR__ . '/../..' . '/src/router/HttpRequest.php',
+        'App\\Guild\\Router\\MultipleRouteFoundException' => __DIR__ . '/../..' . '/src/router/MultipleRouteFoundException.php',
+        'App\\Guild\\Router\\NoRouteFoundException' => __DIR__ . '/../..' . '/src/router/NoRouteFoundException.php',
+        'App\\Guild\\Router\\Route' => __DIR__ . '/../..' . '/src/router/Route.php',
+        'App\\Guild\\Router\\RouteNotSetException' => __DIR__ . '/../..' . '/src/router/RouteNotSetException.php',
+        'App\\Guild\\Router\\Router' => __DIR__ . '/../..' . '/src/router/Router.php',
+        'App\\Guild\\Router\\ViewNotFoundException' => __DIR__ . '/../..' . '/src/router/ViewNotFoundException.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',

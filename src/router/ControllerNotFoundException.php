@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace app\quizz\router;
+namespace App\Guild\Router;
 
 class ControllerNotFoundException extends \Exception
 {

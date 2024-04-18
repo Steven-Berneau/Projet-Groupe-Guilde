@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Entities\Guild;
+namespace App\Guild;
 
 class Instance_type
 {

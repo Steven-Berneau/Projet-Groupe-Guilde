@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Entities\Guild;
+namespace App\Guild;
 
 class DenunciationType
 {
@@ -12,23 +12,23 @@ class DenunciationType
         $this->name = $name;
     }
 
-    public function getId():int
+    public function getId(): int
     {
         return $this->id;
     }
 
     public function setId(int $id)
     {
-        return $this->id=$id;
+        return $this->id = $id;
     }
 
-    public function getName():string
+    public function getName(): string
     {
         return $this->name;
     }
 
     public function setName(string $name)
     {
-        return $this->name=$name;
+        return $this->name = $name;
     }
 }

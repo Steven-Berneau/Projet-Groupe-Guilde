@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace app\quizz\router\Route;
-
-use app\quizz\router\Route;
+namespace App\Guild\Router;
 
 class HttpRequest
 {
@@ -55,7 +53,7 @@ class HttpRequest
   private function bindParamFromPost(): array
   {
     $params = array();
-    foreach ($this->route->getParam() as $param) {
+    foreach ($this->route->getParams() as $param) {
       if (isset($_POST[$param])) {
         $params = $_POST[$param];
       }
