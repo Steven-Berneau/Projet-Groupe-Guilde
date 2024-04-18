@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Guild;
+namespace App\Guild\Models;
 
 class Equipment
 {

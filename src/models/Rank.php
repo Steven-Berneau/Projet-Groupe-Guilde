@@ -2,9 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Guild;
-
-use InvalidArgumentException;
+namespace App\Guild\Models;
 
 class Rank
 {
