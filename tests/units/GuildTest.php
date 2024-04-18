@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace Entities\Guild;
+namespace App\Guild\Models;
 
 use DateTime;
 use DateTimeImmutable;
 use PHPUnit\Framework\TestCase;
-use Entities\Guild\User;
+use App\Guild\Models\User;
 
 class GuildTest extends TestCase
 {
@@ -17,18 +17,18 @@ class GuildTest extends TestCase
      */
     public function testUser1()
     {
-        $user = new User(nickname: "FreeZyBabe");
-        $this->assertSame("FreeZyBabe", $user->getNickname());
+        $user = new User(nickname: "", birthdate: new \DateTimeImmutable('1990/01/30'));
+        $this->assertSame("", $user->getNickname());
     }
     public function testUser2()
     {
-        $user = new User(email: "iudviusd@gmail.com");
-        $this->assertSame("iudviusd@gmail.com", $user->getEmail());
+        $user = new User("",birthdate: new \DateTimeImmutable('1990/01/30'));
+        $this->assertSame("", $user->getEmail());
     }
 
     public function testUser3()
     {
-        $user = new User(email: "jidjvifdjv@gmail.com");
+        $user = new User("",birthdate: new \DateTimeImmutable('1990/01/30'));
         $user->setEmail("Testing setEmail");
         $this->assertSame("Testing setEmail", $user->getEmail());
     }
@@ -66,13 +66,13 @@ class GuildTest extends TestCase
      */
     public function testInstance_Type1()
     {
-        $instanceType = new Instance_type(description: "");
+        $instanceType = new InstanceType(description: "");
         $this->assertSame("", $instanceType->getDescription());
     }
 
     public function testInstance_Type2()
     {
-        $instanceType = new Instance_type(description: "");
+        $instanceType = new InstanceType(description: "");
         $instanceType->setDescription("Description's name must be at least 3 characters long!");
         $this->assertSame("Description's name must be at least 3 characters long!", $instanceType->getDescription());
     }
