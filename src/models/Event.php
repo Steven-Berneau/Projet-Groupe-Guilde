@@ -9,7 +9,7 @@ class Event
   /**
    * Simple class with accessors.
    */
-  public function __construct(private \DateTimeImmutable $date = new \DateTimeImmutable(), private User $organizer, private Area $area, private Characters $participants = new Characters(), private int $levelMinimum = 1, private int $levelMaximum = 1, private int $id = 0)
+  public function __construct(private \DateTimeImmutable $date = new \DateTimeImmutable(), private User $organizer, private Area $area, private Equipment $equipment, private Characters $participants = new Characters(), private int $levelMinimum = 1, private int $levelMaximum = 1, private int $id = 0)
   {
     $this->id = $id;
     $this->date = $date;
@@ -60,7 +60,6 @@ class Event
 
   public function addNewParticipant(Character $character): void
   {
-    // if (!in_array($user, $this->participants))
     if (!self::isCharacterPresent($character))
       $this->participants[] = $character;
     else
@@ -89,7 +88,11 @@ class Event
       return $this->levelMaximum;
     }
   }
-
+  public function getEquipment(): Equipment
+  {
+    return $this->equipment;
+  }
+  // getListParticipants (avec appel SQL)
   public static function listEvents(): \ArrayObject
   {
     /**
@@ -101,7 +104,8 @@ class Event
     while ($row = $stmt->fetch()) {
       $area = Area::read($row['numArea']); //TODO!!!
       $organizer = User::read($row['numUser']);
-      $list[] = new Event(id: $row['id'], organizer: $organizer, area: $area, levelMinimum: $row['levelMinimum'], levelMaximum: $row['levelMaximum']);
+      $equipment = Equipment::read($row['numEquipment']);
+      $list[] = new Event(id: $row['id'], organizer: $organizer, area: $area, levelMinimum: $row['levelMinimum'], levelMaximum: $row['levelMaximum'], equipment: $equipment);
     }
 
     return $list;
@@ -116,7 +120,7 @@ class Event
   public static function updateEvent(Event $event, string $field): void
   {
     $stmt = Database::getInstance()->getConnexion()->prepare('UPDATE event set date = :date, numUser = :numUser, numEquipment = :numEquipment, levelMinimum = :levelMinimum, levelMaximum = :levelMaximum WHERE id = :id');
-    $stmt->execute(['id' => $event->getId(), 'date' => $event->getDate(), 'numUser' => $event->getUser(), 'numEquipement' => getEquipement(), 'levelMinimum' => $event->getLevelMinimum(), $event->getLevelMaximum()]);
+    $stmt->execute(['id' => $event->getId(), 'date' => $event->getDate(), 'numUser' => $event->getOrganizer(), 'numEquipement' => $event->getEquipment()->getId(), 'levelMinimum' => $event->getLevelMinimum(), $event->getLevelMaximum()]);
   }
 
   public function isCharacterPresent(Character $character): bool
