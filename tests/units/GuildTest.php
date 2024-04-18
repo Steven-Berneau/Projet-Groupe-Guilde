@@ -11,7 +11,7 @@ use Entities\Guild\User;
 
 class GuildTest extends TestCase
 {
-
+    // vendor/bin/phpunit --testsuite units (commande Debian)
     /**
      * Test class User isValid;
      */
