@@ -12,7 +12,7 @@ create table `Denunciation` (id int primary key auto_increment, description text
 
 create table `Denunciation_type` (id int primary key auto_increment, label tinytext not null);
 
-create table `Event` (id int primary key auto_increment, date datetime not null, levelMinimum tinyint(255) default 1 not null, levelMaximum tinyint(255) not null);
+create table `Event` (id int primary key auto_increment, name tinytext not null, date datetime not null, levelMinimum tinyint(255) default 1 not null, levelMaximum tinyint(255) not null);
 
 create table `Area` (id int primary key auto_increment, name tinytext not null, description tinytext not null);
 
