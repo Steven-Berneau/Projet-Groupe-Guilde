@@ -20,7 +20,7 @@ create table `Instance_type` (id int primary key auto_increment, description tin
 
 create table `Character` (id int primary key auto_increment, archetype tinytext not null, level tinyint(255) not null);
 
-create table `Rank` (id int primary key auto_increment, name tinytext not null);
+create table `Rank` (id int primary key auto_increment, label tinytext not null);
 
 create table `Equipment` (id int primary key auto_increment, gear text(1023) not null);
 
