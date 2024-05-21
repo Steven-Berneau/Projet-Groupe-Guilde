@@ -1,0 +1,53 @@
+:
+:
+:
+:
+MESSAGE: id, title, contents, date
+CHARACTER: id, archetype, level
+:
+:
+
+:
+:
+:
+WRITES, 0N USER, 11 MESSAGE
+RECEIVES, 11 MESSAGE, 0N USER
+OWNS, 11 CHARACTER, 0N USER
+PARTICIPATES, 0N EVENT, 0N CHARACTER
+:
+
+DENUNCIATION_TYPE: id, label
+DEFINES, 11 DENUNCIATION, 0N DENUNCIATION_TYPE
+DENUNCIATION: id, description
+TO_BE_REPORTED, 0N USER, 11 DENUNCIATION
+USER: id, nickname, email, password, fname, lname, birthDate
+ORGANIZES, 0N [organizer] USER, 11 EVENT
+EVENT: id, name, date, levelMinimum, levelMaximum
+REQUIRES, 0N EQUIPMENT, 01 EVENT
+
+:
+:
+:
+REPORTS, 0N USER, 11 DENUNCIATION
+GENERATES, 11 API_KEY, 0N USER
+ENTITLES, 11 USER, 0N RANK
+OCCURS, 11 [happening] EVENT, 0N AREA
+EQUIPMENT: id, gear
+
+:
+:
+:
+:
+API_KEY: id, api_key
+RANK: id, label
+AREA: id, name, description
+:
+
+:
+:
+:
+:
+:
+INSTANCE_TYPE: id, description
+DESCRIBES, 11 AREA, 0N INSTANCE_TYPE
+:
