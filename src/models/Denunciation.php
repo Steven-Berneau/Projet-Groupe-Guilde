@@ -32,4 +32,32 @@ class Denunciation
     {
         return $this->name = $name;
     }
+
+    public static function read(int $id): ?Denunciation
+    {
+        $statement = Database::getInstance()->getConnexion()->prepare('SELECT * FROM Denunciation WHERE id=:id;');
+        $statement->execute(['id' => $id]);
+        if ($row = $statement->fetch())
+            return new Denunciation(id: $row['id'], name: $row['name']);
+        return NULL;
+    }
+
+    public static function create(Denunciation $denunciation): int
+    {
+        $statement = Database::getInstance()->getConnexion()->prepare('INSERT INTO Denunciation (name) VALUES (:name);');
+        $statement->execute(['name' => $denunciation->getName()]);
+        return (int)Database::getInstance()->getConnexion()->lastInsertId();
+    }
+
+    public static function update(Denunciation $denunciation)
+    {
+        $statement = Database::getInstance()->getConnexion()->prepare('UPDATE Denunciation SET name=:name WHERE id=:id;');
+        $statement->execute(['name' => $denunciation->getName()]);
+    }
+
+    public static function delete(Denunciation $denunciation)
+    {
+        $statement = Database::getInstance()->getConnexion()->prepare('DELETE FROM Denunciation WHERE id=:id;');
+        $statement->execute(['id' => $denunciation->getId()]);
+    }
 }
