@@ -30,4 +30,23 @@ class Equipment
         }
         return null;
     }
+
+    public static function create(Equipment $equipment): int
+    {
+        $statement = Database::getInstance()->getConnexion()->prepare('INSERT INTO Equipment (name) VALUES (:name);');
+        $statement->execute(['name' => $equipment->getName()]);
+        return (int)Database::getInstance()->getConnexion()->lastInsertId();
+    }
+
+    public static function update(Equipment $equipment)
+    {
+        $statement = Database::getInstance()->getConnexion()->prepare('UPDATE Equipment SET name=:name WHERE id=:id;');
+        $statement->execute(['name' => $equipment->getName()]);
+    }
+
+    public static function delete(Equipment $equipment)
+    {
+        $statement = Database::getInstance()->getConnexion()->prepare('DELETE FROM Equipment WHERE id=:id');
+        $statement->execute(['id' => $equipment->getId()]);
+    }
 }
