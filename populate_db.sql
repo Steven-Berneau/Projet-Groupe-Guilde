@@ -39,7 +39,7 @@ alter table `Area` add (numDescription int, foreign key(numDescription) referenc
 alter table `Message` add (sender int not null, addressee int not null, foreign key (sender) references `User`(id), foreign key (addressee) references `User`(id));
 
 -- reports, defines, to_be_reported
-alter table `Denunciation` add (numUser int, numUserDenunciated int, numTypeDenunciation int, foreign key (numUser) references `User`(id), foreign key(numUserDenunciated) references `User`(id), foreign key(numTypeDenunciation) references `Denunciation_type`(id));
+alter table `Denunciation` add (numUser int, numUserDenounced int, numTypeDenunciation int, foreign key (numUser) references `User`(id), foreign key(numUserDenounced) references `User`(id), foreign key(numTypeDenunciation) references `Denunciation_type`(id));
 
 -- organizes, requires, occurs
 alter table `Event` add (numUser int, numEquipment int, numArea int, foreign key (numUser) references `User`(id), foreign key (numEquipment) references `Equipment`(id), foreign key (numArea) references `Area`(id));
